@@ -10,3 +10,9 @@ Speed = 300.0
 
 [node name="Tree" parent="." instance=ExtResource("2_v6pfy")]
 position = Vector2(269, 169)
+
+[node name="Tree2" parent="." instance=ExtResource("2_v6pfy")]
+position = Vector2(460, 517)
+
+[node name="Tree3" parent="." instance=ExtResource("2_v6pfy")]
+position = Vector2(803, 189)
