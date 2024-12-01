@@ -1,14 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://de4fwgh8dab0l"]
+[gd_scene load_steps=5 format=3 uid="uid://de4fwgh8dab0l"]
 
+[ext_resource type="Script" path="res://Chest.cs" id="1_eplme"]
 [ext_resource type="Texture2D" uid="uid://c880jxi1oya5k" path="res://locked-chest.svg" id="1_hlac4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yynhg"]
 size = Vector2(128, 128)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0k32h"]
+radius = 800.0
+
 [node name="Chest" type="StaticBody2D"]
+script = ExtResource("1_eplme")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yynhg")
+
+[node name="Area" type="Area2D" parent="."]
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_0k32h")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
