@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8o1mnbla0cxj"]
 
-[ext_resource type="Texture2D" uid="uid://buaknhkji1tm5" path="res://icon.svg" id="1_i0t7k"]
+[ext_resource type="Texture2D" uid="uid://cmuh3btcmyv6e" path="res://beech.svg" id="1_oe40b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yynhg"]
 size = Vector2(128, 128)
@@ -12,4 +12,5 @@ shape = SubResource("RectangleShape2D_yynhg")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 1)
-texture = ExtResource("1_i0t7k")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_oe40b")
