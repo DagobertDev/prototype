@@ -1,7 +1,7 @@
 using Godot;
 using Prototype;
 
-public partial class Character : Node2D
+public partial class Character : CharacterBody2D
 {
 	[Export] public float Speed { get; set; }
 
@@ -12,6 +12,8 @@ public partial class Character : Node2D
 			InputActions.MoveUp,
 			InputActions.MoveDown);
 		
-		Position += direction * Speed * (float)delta;
+		Velocity = direction * Speed;
+
+		MoveAndSlide();
 	}
 }
