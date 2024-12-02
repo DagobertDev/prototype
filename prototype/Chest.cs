@@ -3,6 +3,8 @@ using Prototype;
 
 public partial class Chest : StaticBody2D, IInteractable
 {
+	private bool _isOpen;
+	
 	public override void _Ready()
 	{
 		var area = GetNode<Area2D>("Area");
@@ -12,7 +14,14 @@ public partial class Chest : StaticBody2D, IInteractable
 	
 	public void Interact()
 	{
-		GD.Print("Opening chest");
+		if (_isOpen)
+		{
+			Close();
+		}
+		else
+		{
+			Open();
+		}
 	}
 
 	private void OnBodyEntered(Node2D body)
@@ -29,5 +38,19 @@ public partial class Chest : StaticBody2D, IInteractable
 		{
 			character.RemoveInteractableObject(this);
 		}
+	}
+
+	private void Open()
+	{
+		GetNode<Sprite2D>("SpriteClosed").Hide();
+		GetNode<Sprite2D>("SpriteOpened").Show();
+		_isOpen = true;
+	}
+
+	private void Close()
+	{
+		GetNode<Sprite2D>("SpriteClosed").Show();
+		GetNode<Sprite2D>("SpriteOpened").Hide();
+		_isOpen = false;
 	}
 }

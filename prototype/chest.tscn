@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://de4fwgh8dab0l"]
+[gd_scene load_steps=6 format=3 uid="uid://de4fwgh8dab0l"]
 
 [ext_resource type="Script" path="res://Chest.cs" id="1_eplme"]
 [ext_resource type="Texture2D" uid="uid://c880jxi1oya5k" path="res://locked-chest.svg" id="1_hlac4"]
+[ext_resource type="Texture2D" uid="uid://dacjfipb1fslv" path="res://open-chest.svg" id="3_m8lni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yynhg"]
 size = Vector2(128, 128)
@@ -21,6 +22,11 @@ scale = Vector2(0.25, 0.25)
 [node name="CollisionShape" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CircleShape2D_0k32h")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="SpriteClosed" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_hlac4")
+
+[node name="SpriteOpened" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_m8lni")
