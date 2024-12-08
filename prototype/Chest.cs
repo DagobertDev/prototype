@@ -4,12 +4,34 @@ using Prototype;
 public partial class Chest : StaticBody2D, IInteractable
 {
 	private bool _isOpen;
+	private ShaderMaterial _outlineMaterial;
+	private Sprite2D _spriteClosed;
+	private Sprite2D _spriteOpened;
 	
 	public override void _Ready()
 	{
 		var area = GetNode<Area2D>("Area");
 		area.BodyEntered += OnBodyEntered;
 		area.BodyExited += OnBodyExited;
+		_outlineMaterial = GD.Load<ShaderMaterial>("res://selection_outline.tres");
+		_spriteClosed = GetNode<Sprite2D>("SpriteClosed");
+		_spriteOpened = GetNode<Sprite2D>("SpriteOpened");
+	}
+	
+	private void OnBodyEntered(Node2D body)
+	{
+		if (body is Character character)
+		{
+			EnableInteraction(character);
+		}
+	}
+	
+	private void OnBodyExited(Node2D body)
+	{
+		if (body is Character character)
+		{
+			DisableInteraction(character);
+		}
 	}
 	
 	public void Interact()
@@ -24,33 +46,31 @@ public partial class Chest : StaticBody2D, IInteractable
 		}
 	}
 
-	private void OnBodyEntered(Node2D body)
+	private void EnableInteraction(Character character)
 	{
-		if (body is Character character)
-		{
-			character.AddInteractableObject(this);
-		}
+		character.AddInteractableObject(this);
+		_spriteClosed.Material = _outlineMaterial;
+		_spriteOpened.Material = _outlineMaterial;
 	}
-	
-	private void OnBodyExited(Node2D body)
+
+	private void DisableInteraction(Character character)
 	{
-		if (body is Character character)
-		{
-			character.RemoveInteractableObject(this);
-		}
+		character.RemoveInteractableObject(this);
+		_spriteClosed.Material = null;
+		_spriteOpened.Material = null;
 	}
 
 	private void Open()
 	{
-		GetNode<Sprite2D>("SpriteClosed").Hide();
-		GetNode<Sprite2D>("SpriteOpened").Show();
+		_spriteClosed.Hide();
+		_spriteOpened.Show();
 		_isOpen = true;
 	}
 
 	private void Close()
 	{
-		GetNode<Sprite2D>("SpriteClosed").Show();
-		GetNode<Sprite2D>("SpriteOpened").Hide();
+		_spriteClosed.Show();
+		_spriteOpened.Hide();
 		_isOpen = false;
 	}
 }
