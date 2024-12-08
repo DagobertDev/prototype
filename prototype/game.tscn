@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvbhk6bh2rhss"]
+[gd_scene load_steps=7 format=3 uid="uid://cvbhk6bh2rhss"]
 
 [ext_resource type="PackedScene" uid="uid://beiax2jhi16x4" path="res://character.tscn" id="1_i7sgo"]
+[ext_resource type="Script" path="res://Game.cs" id="1_rokfc"]
 [ext_resource type="PackedScene" uid="uid://c8o1mnbla0cxj" path="res://tree.tscn" id="2_v6pfy"]
 [ext_resource type="PackedScene" uid="uid://de4fwgh8dab0l" path="res://chest.tscn" id="3_hu02c"]
 [ext_resource type="PackedScene" uid="uid://uj1euelfl1ha" path="res://level_exit.tscn" id="4_3pm7v"]
+[ext_resource type="PackedScene" uid="uid://rklvb6gayuts" path="res://mission_end_screen.tscn" id="6_bjp1k"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_rokfc")
 
 [node name="Character" parent="." instance=ExtResource("1_i7sgo")]
 Speed = 300.0
@@ -24,3 +27,6 @@ position = Vector2(758, 494)
 
 [node name="LevelExit" parent="." instance=ExtResource("4_3pm7v")]
 position = Vector2(1038, 118)
+
+[node name="MissionEndScreen" parent="." instance=ExtResource("6_bjp1k")]
+visible = false

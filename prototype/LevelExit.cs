@@ -32,7 +32,7 @@ public partial class LevelExit : Area2D, IInteractable
 	
 	public void Interact()
 	{
-		GD.Print("Character left scene");
+		GetParent<Game>().ExitLevel();
 	}
 
 	private void EnableInteraction(Character character)
