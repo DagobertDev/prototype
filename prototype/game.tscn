@@ -20,7 +20,7 @@ position = Vector2(460, 517)
 position = Vector2(803, 189)
 
 [node name="Chest" parent="." instance=ExtResource("3_hu02c")]
-position = Vector2(711, 428)
+position = Vector2(758, 494)
 
 [node name="LevelExit" parent="." instance=ExtResource("4_3pm7v")]
 position = Vector2(1038, 118)
